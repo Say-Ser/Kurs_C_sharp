@@ -10,25 +10,41 @@ namespace ConsoleApp1.Task16
     {
         public static void main()
         {
-
+            Console.Out.WriteLine("Введите имя файла: (note.txt)");
+            string name = Console.In.ReadLine();
             string path = @"C:\Users\W-book\source\repos\Say-Ser\Kurs_C_sharp\ConsoleApp1\Task16\";
-            DirectoryInfo dirInfo = new DirectoryInfo(path);
-            if (!dirInfo.Exists)
-                dirInfo.Create();
-            Console.WriteLine("Введите текст для записи в файл:");
-            string text=" ";
-            using FileStream fstream = new FileStream($"{path}note.txt", FileMode.OpenOrCreate);
-            while (text != "stop") 
+            _ = new DirectoryInfo(path);
+            int count = 1;
+            using (FileStream fstreamout = File.OpenRead($"{path}{name}"))
             {
-                text = Console.ReadLine();
+                // преобразуем строку в байты
+                byte[] array = new byte[fstreamout.Length];
+                // считываем данные
+                fstreamout.Read(array, 0, array.Length);
+                foreach (byte ch in array)
+                {
+                    if (ch == 10)
+                        count++;
+                }
+                // декодируем байты в строку
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
+                Console.WriteLine($"Текст из файла:\n {textFromFile}\n");
+                Console.WriteLine(count);
+            }
+           
+            Console.WriteLine("Введите текст для записи в файл:");
+            using FileStream fstreamin = new FileStream($"{path}note.txt", FileMode.OpenOrCreate);
+            while (count != 0) 
+            {
+                string text = Console.ReadLine();
                 // запись в файл
-                
+
                 // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(text+'\n');
                 // запись массива байтов в файл
-                fstream.Write(array, 0, array.Length);
-                
+                fstreamin.Write(array, 0, array.Length);
 
+                count--;
             }
             Console.WriteLine("Текст записан в файл");
         }
