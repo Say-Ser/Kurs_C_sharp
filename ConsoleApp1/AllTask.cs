@@ -40,6 +40,12 @@ namespace ConsoleApp1
                         Task12.ConvertType.main(); break;
                     case 13:
                         Task13.SortBuble.main(); break;
+                    case 14:
+                        Task14.PrintFile.main(); break;
+                    case 15:
+                        Task15.SaveTXTFile.main(); break;
+                    case 16:
+                        Task16.Prov.main(); break;
                     default: break;
                 }
 

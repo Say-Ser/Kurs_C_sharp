@@ -9,14 +9,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Task16\PrintFile.java" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Task16\PrintFile.java" />
-  </ItemGroup>
-
   
 
 </Project>
