@@ -54,6 +54,8 @@ namespace ConsoleApp1
                         MainNew.main(); break;
                     case 20:
                         MainCalc.main(); break;
+                    case 21:
+                        MainTask.main(); break;
                     default: break;
                 }
 
