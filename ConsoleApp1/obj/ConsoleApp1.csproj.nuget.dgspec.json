@@ -37,6 +37,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Cci": {
+              "target": "Package",
+              "version": "[4.0.0-rc3-24214-00, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

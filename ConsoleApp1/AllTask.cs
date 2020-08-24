@@ -46,6 +46,14 @@ namespace ConsoleApp1
                         Task15.SaveTXTFile.main(); break;
                     case 16:
                         Task16.Prov.main(); break;
+                    case 17:
+                        Calc.main(); break;
+                    case 18:
+                        Task3_1.main(); break;
+                    case 19:
+                        MainNew.main(); break;
+                    case 20:
+                        MainCalc.main(); break;
                     default: break;
                 }
 

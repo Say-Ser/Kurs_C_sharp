@@ -7,7 +7,6 @@ namespace ConsoleApp1.FinaleTask02
     public class SortMass {
         public static void main() {
             int size;
-            Random random = new Random();
             Console.Out.Write("Введите размерность массива: ");
             size = int.Parse(Console.In.ReadLine());
             int[] mass = new int[size];
