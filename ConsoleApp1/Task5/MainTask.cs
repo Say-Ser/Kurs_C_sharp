@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 using System.IO;
 /**
 * @author Sayapin S.V.
-*/
+*//*
 public class MainTask {
     public static void main() {
         try {
@@ -45,3 +45,4 @@ public class MainTask {
         }
     }
 }
+*/
