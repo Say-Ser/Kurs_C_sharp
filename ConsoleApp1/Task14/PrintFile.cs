@@ -4,14 +4,18 @@ using System.IO;
 using System.IO.Enumeration;
 using System.Text;
 
+
 namespace ConsoleApp1.Task14
 {
     public class PrintFile {
         public static void main() {
             Console.Out.WriteLine("Введите имя файла: (test.txt)");
             string name =Console.In.ReadLine();
-            string path = @"C:\Users\W-book\source\repos\Say-Ser\Kurs_C_sharp\ConsoleApp1\Task14\";
-            using (FileStream fstream = File.OpenRead($"{path}{name}"))
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string relPath = @"..\..\..\Task14\"; // Относительный путь к файлу
+            string resPath = Path.Combine(exeDir, relPath); // Объединяет две строки в путь.
+            resPath = Path.GetFullPath(resPath); // Возвращает для указанной строки пути абсолютный путь.
+            using (FileStream fstream = File.OpenRead($"{resPath}{name}"))
             {
                 // преобразуем строку в байты
                 byte[] array = new byte[fstream.Length];

@@ -9,16 +9,19 @@ namespace ConsoleApp1.Task15
 
     public class SaveTXTFile {
         public static void main() {
-
-            string path = @"C:\Users\W-book\source\repos\Say-Ser\Kurs_C_sharp\ConsoleApp1\Task15\";
-            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string relPath = @"..\..\..\Task15\"; // Относительный путь к файлу
+            string resPath = Path.Combine(exeDir, relPath); // Объединяет две строки в путь.
+            resPath = Path.GetFullPath(resPath); // Возвращает для указанной строки пути абсолютный путь.
+           // string resPath = @"C:\Users\W-book\source\repos\Say-Ser\Kurs_C_sharp\ConsoleApp1\Task15\";
+            DirectoryInfo dirInfo = new DirectoryInfo(resPath);
             if (!dirInfo.Exists)
                  dirInfo.Create();
             Console.WriteLine("Введите строку для записи в файл:");
             string text = Console.ReadLine();
 
             // запись в файл
-            using (FileStream fstream = new FileStream($"{path}note.txt", FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream($"{resPath}note.txt", FileMode.OpenOrCreate))
             {
                 // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(text);

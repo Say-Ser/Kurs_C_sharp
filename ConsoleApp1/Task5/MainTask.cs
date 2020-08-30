@@ -14,6 +14,10 @@ public class MainTask {
     public static void main() {
        // try {
             string lines= File.ReadAllText("C:/Users/W-book/source/repos/Say-Ser/Kurs_C_sharp/ConsoleApp1/Task5/input.txt");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string relPath = @"..\..\..\Task15\"; // Относительный путь к файлу
+            string resPath = Path.Combine(exeDir, relPath); // Объединяет две строки в путь.
+            resPath = Path.GetFullPath(resPath); // Возвращает для указанной строки пути абсолютный путь.
             string[] words = lines.Split(' ');
             var sortedwords = from word in words orderby word select word;
             Console.Out.WriteLine("Сортировка в афавитном порядке:");

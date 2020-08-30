@@ -12,10 +12,13 @@ namespace ConsoleApp1.Task16
         {
             Console.Out.WriteLine("Введите имя файла: (note.txt)");
             string name = Console.In.ReadLine();
-            string path = @"C:\Users\W-book\source\repos\Say-Ser\Kurs_C_sharp\ConsoleApp1\Task16\";
-            _ = new DirectoryInfo(path);
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string relPath = @"..\..\..\Task16\"; // Относительный путь к файлу
+            string resPath = Path.Combine(exeDir, relPath); // Объединяет две строки в путь.
+            resPath = Path.GetFullPath(resPath); // Возвращает для указанной строки пути абсолютный путь.
+            _ = new DirectoryInfo(resPath);
             int count = 1;
-            using (FileStream fstreamout = File.OpenRead($"{path}{name}"))
+            using (FileStream fstreamout = File.OpenRead($"{resPath}{name}"))
             {
                 // преобразуем строку в байты
                 byte[] array = new byte[fstreamout.Length];
@@ -33,7 +36,7 @@ namespace ConsoleApp1.Task16
             }
            
             Console.WriteLine("Введите текст для записи в файл:");
-            using FileStream fstreamin = new FileStream($"{path}note.txt", FileMode.OpenOrCreate);
+            using FileStream fstreamin = new FileStream($"{resPath}note.txt", FileMode.OpenOrCreate);
             while (count != 0) 
             {
                 string text = Console.ReadLine();
